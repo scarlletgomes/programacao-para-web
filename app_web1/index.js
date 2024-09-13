@@ -15,7 +15,7 @@ app.get('/upper/:n', function(req, res){
     res.send(lc.to_upper(word));
 });
 
-app.get('/lower', function(req, res){
+app.get('/lower/:n', function(req, res){
     let word = req.params.n;
     res.send(lc.to_lower(word));
 });
