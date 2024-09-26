@@ -1,10 +1,10 @@
 let produtos = []
 
-function criarProdutos (id, nome, qnt){
+function criarProdutos (id, nome, qtd){
     var p = {
         id : id,
         nome : nome,
-        qnt : qnt
+        qtd : qtd
     }
     return p;
 }
@@ -18,15 +18,12 @@ function adicionarProdutos(p){
 }
 
 function removerProdutos(id){
-    // produtos = produtos.filter((p) => {
-    //     let x = p.id != id;
-    //     return x;
-    // });
-    produtos.splice(id);
+       produtos = produtos.splice(id);
 }
 
-function editarProdutos(qnt){
-    produtos.splice(qnt);
+
+function editarProdutos(id, novaQtd){
+        
 }
 
 module.exports = {
