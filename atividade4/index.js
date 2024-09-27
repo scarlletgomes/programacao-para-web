@@ -28,8 +28,7 @@ app.get('/remover/:id', function(req, res){
 
 app.get('/editar/:id/:qtd', function(req, res){
     let id = req.params.id;
-    let qtd = req.params.qtd;
-    let novaQtd = req.params.novaQtd;
+    let novaQtd = req.params.qtd;
     estoque.editarProdutos(id, novaQtd);
     res.send(novaQtd);
 })

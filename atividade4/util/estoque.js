@@ -22,8 +22,9 @@ function removerProdutos(id){
 }
 
 
-function editarProdutos(id, novaQtd){
-        
+function editarProdutos(id, qtd){
+    novaQtd == qtd;
+    produtos = produtos.splice(id, 1, novaQtd);
 }
 
 module.exports = {
