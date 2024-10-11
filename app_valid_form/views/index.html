@@ -24,15 +24,15 @@
             <form action="/dados" method="post">
                 <div class="col-6 offset-3">
                     <label for="nome" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" name="nome" id="nome">
+                    <input type="text" class="form-control" name="nome" id="nome" value="{{nome}}">
                 </div>
                 <div class="col-6 offset-3">
                     <label for="data nascimento" class="form-label">Data de nascimento:</label>
-                    <input type="date" class="form-control" name="data_nascimento" id="data_nascimento">
+                    <input type="date" class="form-control" name="data_nascimento" id="data_nascimento" value="{{data_nascimento}}">
                 </div>
                 <div class="col-6 offset-3">
                     <label for="descricao" class="form-label">Descrição:</label>
-                    <textarea name="descricao" id="form-control" class="form-control"></textarea>
+                    <textarea name="descricao" id="form-control" class="form-control">{{descricao}}</textarea>
                 </div>
                 <div class="col-6 offset-3 mt-3">
                     <button type="submit" class="w-100 btn btn-success">Enviar</button>
