@@ -17,22 +17,28 @@
                 <a href="/" class="btn btn-link">Voltar</a>
             </div>
 
+            {{#agendamentos}}
+            <div class="col-6 offset-3">
+               <h1>Agendamento #{{id}}</h1> 
+            </div>
             <div class="col-6 offset-3">
                 <h3>Nome:</h3>
-                <p>{{dados.nome}}</p>
+                <p>{{nome}}</p>
             </div>
             <div class="col-6 offset-3">
                 <h3>Telefone:</h3>
-                <p>{{dados.telefone}}</p>
+                <p>{{telefone}}</p>
             </div>
             <div class="col-6 offset-3">
                 <h3>Endereço:</h3>
-                <p>{{dados.endereco}}</p>
+                <p>{{endereco}}</p>
             </div>
             <div class="col-6 offset-3">
                 <h3>Data de agendamento:</h3>
-                <p>{{dados.data_agendamento}}</p>
+                <p>{{data_agendamento}}</p>
             </div>
+            {{/agendamentos}}
+            <hr>
         </div>
     </div>
 </body>
