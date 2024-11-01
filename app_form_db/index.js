@@ -1,5 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const session = require('express-session');
 const db = require('./db');
 
 const app = express();
@@ -9,8 +10,18 @@ app.set('view engine', 'html');
 app.set('views'. __dirname + '/views');
 app.use(express.urlencoded({extended: true}));
 
-const formRouter = require('../app_form_db/routers/formRouter');
+//uso chash e cookies
+app.use(session({
+    secret: 'secret-token',
+    name: 'sessionId',
+    resave: false,
+    saveUninitialized: false
+}));
+
+const formRouter = require('./routers/formRouter');
+const usuarioRouter = require('./routers/usuarioRouter');
 app.use('/', formRouter);
+app.use('/', usuarioRouter);
 
 db.sync();
 
