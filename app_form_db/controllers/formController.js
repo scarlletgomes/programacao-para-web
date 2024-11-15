@@ -1,14 +1,12 @@
-const Agendamento = require('..models/agendamento');
+const Agendamento = require('../models/agendamento');
 
-
-function getIndexView(req, res){
+function getIndexView (req, res){
     let erro_form = req.query.erro_form;
     let nome = req.query.nome;
     let endereco = req.query.endereco;
     let telefone = req.query.telefone;
     let data_agendamento = req.query.data_agendamento;
     res.render('index.html', {erro_form, nome, endereco, telefone, data_agendamento});
-
 }
 
 function postDados(req, res){
@@ -34,19 +32,20 @@ function postDados(req, res){
     }
 
     if(erro_form){
-        res.redirect(`/?erro_form=1&true=${dados.nome}&endereco=${dados.endereco}&telefone=${dados.telefone}&data_agendamento=${dados.data_agendamento}`);
-    }else{
+        res.redirect(`/?erro_form=1&nome=${dados.nome}&data_agendamento=${dados.data_agendamento}&endereco=${dados.endereco}&telefone=${dados.telefone}`);
+    }
+    else{
         Agendamento.create(dados).then(()=>{
-            res.render('dados.html', {dados});    
+            res.render('dados.html', {dados});
         });
     }
+    
 }
 
 function getAgendamentosView(req, res){
     Agendamento.findAll().then((agendamentos)=>{
         res.render('agendamentos.html', {agendamentos});
     });
-
 }
 
 module.exports = {
@@ -54,7 +53,3 @@ module.exports = {
     postDados,
     getAgendamentosView
 }
-
-
-
-

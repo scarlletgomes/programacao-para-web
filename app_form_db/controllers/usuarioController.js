@@ -1,20 +1,20 @@
-const Usuario = require =('../models/usuario');
-
-
+const Usuario = require('../models/usuario');
 
 function cadastroView(req, res){
-    res.render('cadastro_usuario.html');
+    let erro_form = req.query.erro_form;
+    res.render('cadastro_usuario.html', {erro_form});
 }
+
 function loginView(req, res){
-    let erro_form = require
-    res.render('login.html');
+    let erro_login = req.query.erro_login;
+    res.render('login.html', {erro_login});
 }
 
 function postCadastro(req, res){
     let dados = {
         nome: req.body.nome,
-        email: req.body.endereco,
-        senha: req.body.telefone,
+        email: req.body.email,
+        senha: req.body.senha
     };
 
     let erro_form = false;
@@ -29,15 +29,17 @@ function postCadastro(req, res){
     }
 
     if(erro_form){
-        res.redirect(`/cadatro?erro_form=1`);
-    }else{
+        res.redirect(`/cadastro?erro_form=1`);
+    }
+    else{
         Usuario.create(dados).then(()=>{
-            res.render('/login');    
+            res.redirect('/login');
         }).catch((err)=>{
             console.log(err);
-            res.redirect(`/cadatro?erro_form=1`);
+            res.redirect(`/cadastro?erro_form=1`);
         });
     }
+    
 }
 
 module.exports = {

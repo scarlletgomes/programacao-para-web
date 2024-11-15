@@ -1,29 +1,30 @@
 const Sequelize = require('sequelize');
-const db = require('../db');
+const database = require('../db');
 
-const Agendamento = db.define('agendamento', {
+const Usuario = database.define('usuario', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+    },
+    senha: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     nome: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    endereco: {
+    data_nascimento: {
         type: Sequelize.STRING,
         allowNull: false
-    },
-    telefone: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    data_agendamento: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+    }
 });
 
-module.exports = Agendamento;
+module.exports = Usuario;

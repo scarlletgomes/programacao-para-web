@@ -7,12 +7,11 @@ const app = express();
 
 app.engine('html', mustacheExpress());
 app.set('view engine', 'html');
-app.set('views'. __dirname + '/views');
+app.set('views', __dirname + '/views');
 app.use(express.urlencoded({extended: true}));
 
-//uso chash e cookies
-app.use(session({
-    secret: 'secret-token',
+app.use(session({  
+    secret: 'secrect-token',
     name: 'sessionId',
     resave: false,
     saveUninitialized: false
@@ -20,8 +19,12 @@ app.use(session({
 
 const formRouter = require('./routers/formRouter');
 const usuarioRouter = require('./routers/usuarioRouter');
+const autenticacaoRouter = require('./routers/autenticacaoRouter');
 app.use('/', formRouter);
 app.use('/', usuarioRouter);
+app.use('/', autenticacaoRouter);
+
+
 
 db.sync();
 
